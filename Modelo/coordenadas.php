@@ -16,12 +16,12 @@ class coordenadasModel
 
     public function getcoordenadas(){
         try{
-            $consulta = $this->DB->query("SELECT idsitios, municipios.Municipio ,Latitud,
-             Longitud, tipodesitio.TipoDeSitiocol as Categoria, Toneladas_por_Dia, edo_operacion.Estado as Edo_operacion
-            FROM sitios, municipios, tipodesitio, edo_operacion
+            $consulta = $this->DB->query("SELECT idSitio, municipios.Municipio ,Latitud,
+             Longitud, tipositio.NombreSitio as Categoria, Toneladas_por_dia,estadooperacion.EstadoOperacion as Edo_operacion
+            FROM sitios, municipios, tipositio, estadooperacion
             where sitios.Municipio = municipios.idMunicipios
-            and sitios.Categoria = tipodesitio.idTipoDeSitio
-            and sitios.Edo_operacion = edo_operacion.idEdo_Operacion");
+            and sitios.TipoSitio = tipositio.idTipoSitio
+            and sitios.Estado_Operacion = estadooperacion.idEstadoOperacion");
             while($registro = $consulta->fetch(PDO::FETCH_ASSOC)){
                 $this->puntos[] = $registro;
             }

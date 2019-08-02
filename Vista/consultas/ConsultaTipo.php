@@ -94,74 +94,71 @@ if (isset($_POST["subTipo"])){
 </header>
 <section>
     <article>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Por Municipio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#profile">Por Region</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab"  href="#">Disabled</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
+        <h2 style="text-align: left">Consulta por tipo de sitio</h2>
+        <br>
+        <h5 style="text-align: left">Seleccione el tipo de sitio que desea consultar</h5>
+        <div id="myTabContent" class="tab-content" style="margin-top: 50px">
             <div class="tab-pane fade show active" id="home">
                 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="FormConsult">
-
                     <select class="js-example-basic-single" name="Tipo">
                         <option >Seleccionar</option>
                         <?php
                         require_once ("../../Controlador/consulta_tipo.php");
-                        foreach ($tipo as $tipo):
+                        foreach ($tipos as $tipo):
                             ?>
                             <option value="<?php echo $tipo['idTipoSitio'];?>"> <?php echo $tipo['NombreSitio'];?> </option>
                         <?php endforeach;?>
                     </select>
                     <button type="submit" name="subTipo">Aceptar</button> <!-- AQUIIIIIIIIIIII-->
                 </form>
-                <div>
-                    <?php
-                    if (isset($_POST["subTipo"])):
-
-                        foreach ($consultatipo as $consultatipo):
-                            ?>
-                            <table>
-                                <tr>
+                <div style="margin-top: 50px">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr class="table-warning">
+                            <th scope="col">Tipo de sitios</th>
+                            <th scope="col">Latitud</th>
+                            <th scope="col">Longitud</th>
+                            <th scope="col">Municipio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if (isset($_POST["subTipo"])):
+                            foreach ($consultatipos as $consultatipo):
+                                ?>
+                                <tr class="table-light">
                                     <td>
                                         <a> <?php echo $consultatipo["NombreSitio"]?></a>
                                     </td>
+                                    <td>
+                                        <a> <?php echo $consultatipo["Latitud"]?></a>
+                                    </td>
+                                    <td>
+                                        <a> <?php echo $consultatipo["Longitud"]?></a>
+                                    </td>
+                                    <td>
+                                        <a> <?php echo $consultatipo["Municipio"]?></a>
+                                    </td>
                                 </tr>
-                            </table>
-                        <?php endforeach;endif; ?>
+                            <?php endforeach;endif; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="profile">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown1">
-                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown2">
-                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-            </div>
         </div>
+        <h5 style="text-align: left; margin-top: 100px">Descargas:</h5>
+        <br>
+        <button type="button" class="btn btn-outline-success">Archivo Excel</button>
+        <button type="button" class="btn btn-outline-success">Archivo PDF</button>
     </article>
 </section>
-</body>
-</html>
 <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
     });
 </script>
+<footer>
+    <p style="text-align: center">SIG de Sitios de Disposición Final de RSU COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
+</footer>
+</body>
+</html>

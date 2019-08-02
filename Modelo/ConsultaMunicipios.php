@@ -14,7 +14,7 @@ class ConsultaMunicipios_Models
         $this->value = 0;
     }
 
-    public function getconsultaMunicipio($municipio){
+    public function getconsultaMunicipio($municipio){ //trae los datos cuando se oprime aceptar
         try{
             $consulta = $this->DB->query("select municipios.Municipio, Latitud, Longitud
             from sitios, municipios 
@@ -37,7 +37,7 @@ class ConsultaMunicipios_Models
         }*/
     }
 
-    public function getMunicipio(){
+    public function getMunicipio(){ //llena las opciones del select
         try{
             $consulta = $this->DB->query("select idMunicipios,Municipio from municipios");
             while($registro = $consulta->fetch(PDO::FETCH_ASSOC)){

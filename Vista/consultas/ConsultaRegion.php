@@ -94,10 +94,12 @@ if (isset($_POST["sub"])){
 </header>
 <section>
     <article>
-        <div id="myTabContent" class="tab-content">
+        <h2 style="text-align: left">Consulta por región</h2>
+        <br>
+        <h5 style="text-align: left">Seleccione la región que desea consultar</h5>
+        <div id="myTabContent" class="tab-content" style="margin-top: 50px">
             <div class="tab-pane fade show active" id="home">
                 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="FormConsult">
-
                     <select class="js-example-basic-single" name="Region">
                         <option >Seleccionar</option>
                         <?php
@@ -109,38 +111,54 @@ if (isset($_POST["sub"])){
                     </select>
                     <button type="submit" name="sub">Aceptar</button> <!-- AQUIIIIIIIIIIII-->
                 </form>
-                <div>
-                    <?php
-                    if (isset($_POST["sub"])):
-
-                        foreach ($consultaregiones as $consultaregion):
-                            ?>
-                            <table>
-                                <tr>
+                <div style="margin-top: 50px">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr class="table-warning">
+                            <th scope="col">Región</th>
+                            <th scope="col">Latitud</th>
+                            <th scope="col">Longitud</th>
+                            <th scope="col">Estado de operación</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if (isset($_POST["sub"])):
+                            foreach ($consultaregiones as $consultaregion):
+                                ?>
+                                <tr class="table-light">
+                                    <td>
+                                        <a> <?php echo $consultaregion["Region"]?></a>
+                                    </td>
+                                    <td>
+                                        <a> <?php echo $consultaregion["Region"]?></a>
+                                    </td>
+                                    <td>
+                                        <a> <?php echo $consultaregion["Region"]?></a>
+                                    </td>
                                     <td>
                                         <a> <?php echo $consultaregion["Region"]?></a>
                                     </td>
                                 </tr>
-                            </table>
-                        <?php endforeach;endif; ?>
+                            <?php endforeach;endif; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="profile">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown1">
-                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown2">
-                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-            </div>
         </div>
+        <h5 style="text-align: left; margin-top: 100px">Descargas:</h5>
+        <br>
+        <button type="button" class="btn btn-outline-success">Archivo Excel</button>
+        <button type="button" class="btn btn-outline-success">Archivo PDF</button>
     </article>
 </section>
-</body>
-</html>
 <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
     });
 </script>
+<footer>
+    <p style="text-align: center">SIG de Sitios de Disposición Final de RSU COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
+</footer>
+</body>
+</html>

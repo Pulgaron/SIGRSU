@@ -104,11 +104,11 @@ require_once("Controlador/ControladorCoordenadas.php");
                     map: map,
                     title: lista_coordenadas[i].Municipio,
                     animation: google.maps.Animation.DROP,
-                    id : parseInt(lista_coordenadas[i].idsitios),
+                    id : parseInt(lista_coordenadas[i].idSitio),
                     icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png'
 
                 });
-                markers[lista_coordenadas[i].idsitios] = marker;
+                markers[lista_coordenadas[i].idSitio] = marker;
 
                 datos.innerHTML='';
 
@@ -126,7 +126,7 @@ require_once("Controlador/ControladorCoordenadas.php");
                                  localStorage.setItem('titulo', titulo);}
                          } */
                         datos.innerHTML = '<a> Municipio: '+lista_coordenadas[i].Municipio+'</a></br><a>Tipo de Sitio: '+lista_coordenadas[i].Categoria+'</a>'+
-                            '</br><a>Toneladas recibidas por dia: '+lista_coordenadas[i].Toneladas_por_Dia+'</a>'+'</br><a>Estado de operacion: '+lista_coordenadas[i].Edo_operacion+'</a>'
+                            '</br><a>Toneladas recibidas por dia: '+lista_coordenadas[i].Toneladas_por_dia+'</a>'+'</br><a>Estado de operacion: '+lista_coordenadas[i].Edo_operacion+'</a>'
                         infowindow.setContent(datos);
                         infowindow.open(map, marker);
 
@@ -145,14 +145,11 @@ require_once("Controlador/ControladorCoordenadas.php");
                     center: {lat:parseFloat(lista_coordenadas[i].Latitud), lng:parseFloat(lista_coordenadas[i].Longitud)},
                     radius: 1000,
                 });
-                circulos[lista_coordenadas[i].idsitios] = circle;
+                circulos[lista_coordenadas[i].idSitio] = circle;
             }
         }
-        var toggle = document.querySelector("#hide");
-        var flag;
-        toggle.addEventListener('click', function(){
 
-        });
+        var flag;
 
         function desactivar(idMark){
             if(flag === 0){

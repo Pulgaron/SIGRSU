@@ -2,14 +2,52 @@
 
 
 if (isset($_POST["sub"])){
-    $municipio = $_POST['Municipio'];
+    $municipioo = $_POST['Municipio'];
     require_once("../../Controlador/consultas/ControladorConsultaMunicipios.php");
 
 }
 
+if(isset($_POST['export_data'])) {
+    $municipio = $_POST['Municipio'];
+    require_once("../../Controlador/consultas/ControladorConsultaMunicipios.php");
 
 
+    function filterData(&$str)
+    {
+        $str = preg_replace("/\t/", "\\t", $str);
+        $str = preg_replace("/\r?\n/", "\\n", $str);
+        if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+    }
+
+// file name for download
+    $fileName = "codexworld_export_data" . date('Ymd') . ".xls";
+
+// headers for download
+    header("Content-Disposition: attachment; filename=\"$fileName\"");
+    header("Content-Type: application/vnd.ms-excel");
+
+    $flag = false;
+    foreach ($consultamunicipios as $row) {
+        if (!$flag) {
+            // display column names as first row
+            echo implode("\t", array_keys($row)) . "\n";
+            $flag = true;
+        }
+        // filter data
+        array_walk($row, 'filterData');
+        echo implode("\t", array_values($row)) . "\n";
+
+    }
+
+    exit;
+}
 ?>
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,31 +132,12 @@ if (isset($_POST["sub"])){
 </header>
 <section>
     <article>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Por Municipio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#profile">Por Region</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab"  href="#">Disabled</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
+        <h2 style="text-align: left">Consulta por municipio</h2>
+        <br>
+        <h5 style="text-align: left">Seleccione el municipio que desea consultar</h5>
+        <div id="myTabContent" class="tab-content" style="margin-top: 50px">
             <div class="tab-pane fade show active" id="home">
                 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="FormConsult">
-
                     <select class="js-example-basic-single" name="Municipio">
                         <option >Seleccionar</option>
                         <?php
@@ -128,40 +147,58 @@ if (isset($_POST["sub"])){
                         <option value="<?php echo $municipio['idMunicipios'];?>"> <?php echo $municipio['Municipio'];?> </option>
                         <?php endforeach;?>
                     </select>
-                        <button type="submit" name="sub">Aceptar</button> <!-- AQUIIIIIIIIIIII-->
+                    <button type="submit" name="sub" class="btn btn-primary btn-sm">Aceptar</button> <!-- AQUIIIIIIIIIIII-->
                 </form>
-                <div>
-                    <?php
-                    if (isset($_POST["sub"])):
-
-                    foreach ($consultamunicipios as $consultamunicipio):
-                    ?>
-                    <table>
-                        <tr>
-                           <td>
-                               <a> <?php echo $consultamunicipio["Municipio"]?></a>
-                           </td>
+                <div style="margin-top: 50px">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr class="table-warning">
+                            <th scope="col">Municipo</th>
+                            <th scope="col">Latitud</th>
+                            <th scope="col">Longitud</th>
+                            <th scope="col">Tipo de sitio</th>
                         </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if (isset($_POST["sub"])):
+                        foreach ($consultamunicipios as $consultamunicipio):
+                        ?>
+                        <tr class="table-light">
+                            <td>
+                                <a> <?php echo $consultamunicipio["Municipio"]?></a>
+                            </td>
+                            <td>
+                                <a> <?php echo $consultamunicipio["Latitud"]?></a>
+                            </td>
+                            <td>
+                                <a> <?php echo $consultamunicipio["Longitud"]?></a>
+                            </td>
+
+                        </tr>
+                        <?php endforeach;endif; ?>
+                        </tbody>
                     </table>
-                    <?php endforeach;endif; ?>
                 </div>
             </div>
-            <div class="tab-pane fade" id="profile">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown1">
-                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown2">
-                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-            </div>
         </div>
+        <h5 style="text-align: left; margin-top: 100px">Descargas:</h5>
+        <br>
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <input type="hidden" value="<?php echo $municipioo?>" name="Municipio">
+            <a><?php echo $municipioo?><a/>
+        <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-outline-success" <button type="button" class="btn btn-outline-success">Archivo Excel</button>
+        <button type="button" class="btn btn-outline-success">Archivo PDF</button>
+            <form>
     </article>
 </section>
-</body>
-</html>
 <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
     });
 </script>
+<footer>
+    <p style="text-align: center">SIG de Sitios de Disposición Final de RSU COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
+</footer>
+</body>
+</html>
