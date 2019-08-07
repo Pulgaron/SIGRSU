@@ -17,7 +17,7 @@ class Usuarios_Models
   public function my_data($id)
   {
     try {
-      $consulta = $this->db->query("SELECT Usuario FROM usuarios WHERE idUsuarios='$id'");
+      $consulta = $this->db->query("SELECT Usuario FROM usuario WHERE idUsuario='$id'");
       while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
         $this->usuarios[] = $registro;
       }
@@ -35,9 +35,9 @@ class Usuarios_Models
   public function estado($id)
   {
     try {
-      $consulta = $this->db->query("SELECT Estado FROM usuarios WHERE idUsuarios = '$id'");
+      $consulta = $this->db->query("SELECT Status FROM usuario WHERE idUsuario = '$id'");
       while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
-        $estado = $registro['Estado'];
+        $estado = $registro['Status'];
       }
       return $estado;
     } catch (Exception $e) {
@@ -51,13 +51,13 @@ class Usuarios_Models
   public function busca_usuario_registrado($usuario,$contrasenia)
   {
     try {
-      $consulta = $this->db->query("SELECT * FROM usuarios WHERE Usuario = '$usuario'");
+      $consulta = $this->db->query("SELECT * FROM usuario WHERE Usuario = '$usuario'");
       $this->value = -2;//menos 2 no hay registros
       while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
         $this->value = -1;//Si hay apodo
         // if (password_verify($contrasenia,$registro['Contrasenia'])) {
             if ($contrasenia == $registro['Contrasenia']) {
-          $this->value = $registro['idUsuarios'];//Mayor que cero si existe el registro
+          $this->value = $registro['idUsuario'];//Mayor que cero si existe el registro
           break;
         }
       }

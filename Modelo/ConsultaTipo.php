@@ -16,9 +16,13 @@ class ConsultaTipo_Models
 
     public function getconsultaTipo($tipo){
         try{
-            $consulta = $this->DB->query("select tipositio.NombreSitio, Latitud, Longitud
-            from sitios, tipositio
+            $consulta = $this->DB->query("select tipositio.NombreSitio, municipios.Municipio, Latitud, Longitud, estadooperacion.EstadoOperacion, 
+            Toneladas_por_dia, Anios_vida_util, CASE WHEN Proyecto_Ejecutivo = 1 THEN 'Si' ELSE 'No' END as Proyecto_Ejecutivo, 
+            CASE WHEN Cumple_Norma = 1 THEN 'Si' ELSE 'No' END as Cumple_Norma, CASE WHEN Pepena = 1 THEN 'Si' ELSE 'No' END as Pepena
+            from sitios, municipios, tipositio, estadooperacion
             where sitios.TipoSitio = tipositio.idTipoSitio
+            and sitios.Municipio = municipios.idMunicipios
+            and estadooperacion.idEstadoOperacion = sitios.Estado_Operacion
             and tipositio.idTipoSitio = '$tipo'");
             while($registro = $consulta->fetch(PDO::FETCH_ASSOC)){
                 $this->puntos[] = $registro;
@@ -37,7 +41,7 @@ class ConsultaTipo_Models
         }*/
     }
 
-    public function getMunicipio(){
+    public function getTipo(){
         try{
             $consulta = $this->DB->query("select idTipoSitio, NombreSitio from tipositio");
             while($registro = $consulta->fetch(PDO::FETCH_ASSOC)){

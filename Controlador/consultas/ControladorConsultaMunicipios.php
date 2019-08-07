@@ -1,6 +1,6 @@
 <?php
-$municipio = $_POST["Municipio"];
+$municipioo = $_POST["Municipio"];
 require_once("../../Modelo/ConsultaMunicipios.php");
 $get = new ConsultaMunicipios_Models();
-$consultamunicipios = $get->getconsultaMunicipio($municipio);
+$consultamunicipios = $get->getconsultaMunicipio($municipioo);
 

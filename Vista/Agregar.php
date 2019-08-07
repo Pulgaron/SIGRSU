@@ -69,19 +69,19 @@
                     <a class="nav-link" href="vistaAdmin.php"><span class="sr-only; icon-home"></span> Mi cuenta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Agregar</a>
+                    <a class="nav-link" href="#">Agregar nuevo sitio</a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link" href="Editar.php">Editar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Eliminar.php">Eliminar</a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </nav>
 </div>
-<h2 style="text-align: left; margin-left: 25%; margin-right: 25%; margin-top: 80px;">Agregar un punto al mapa</h2>
+<h2 style="text-align: left; margin-left: 25%; margin-right: 25%; margin-top: 80px;">Agregar un nuevo sitio al mapa</h2>
 <div style="width: 50%; margin-left: 25%; margin-right: 25%; background-color: #d9d9d9">
     <div style="width: 80%; margin-left: 10%; margin-right: 10%; margin-top: 60px">
         <br>

@@ -70,7 +70,7 @@
                     <a class="nav-link" href="vistaAdmin.html"><span class="sr-only; icon-home"></span> Mi cuenta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Georreferencias.php">Georreferencias</a>
+                    <a class="nav-link" href="Georreferencias.php">Sitios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="BaseDatos.php">Base de Datos</a>

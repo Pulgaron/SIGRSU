@@ -12,9 +12,7 @@ require_once("Controlador/ControladorCoordenadas.php");
     <link rel="icon" type="image/png" width="100%" height="100%" href="imagenes/logo.png">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/iconos.css" type="text/css" media="all" />
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8R1knz15286Hf1yU1ievgZFxeF7fnC0w&callback=initMap">
-    </script>
+    <script src="js/colormarcador.js"></script>
     <meta charset="utf-8">
     <meta name="author" content="Genesis Mora Cruz">
 </head>
@@ -80,16 +78,26 @@ require_once("Controlador/ControladorCoordenadas.php");
         </nav>
     </div>
 </header>
+<div id="holi">
+    <button id ="buton-holi" onclick="colorChanger()"> asdasd</button>
+</div>
 <div id="datos"></div>
 <div id="map" class="container">
+
     <script>
         var flag = 0;
         var datos = document.querySelector("#datos");
         var lista_coordenadas = <?php echo json_encode($coordenadas)?>;
         var map;
         var markers = [];
+        var markers2 = [];
         var circulos = [];
         var circle;
+        
+
+        for(var i = 0; i<lista_coordenadas.length; i++){
+            markers[i] = lista_coordenadas[i];
+        } 
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -104,11 +112,13 @@ require_once("Controlador/ControladorCoordenadas.php");
                     map: map,
                     title: lista_coordenadas[i].Municipio,
                     animation: google.maps.Animation.DROP,
-                    id : parseInt(lista_coordenadas[i].idsitios),
-                    icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png'
+                    id : parseInt(lista_coordenadas[i].idSitio),
+                    icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png',
+                    sitio: lista_coordenadas[i].tipositio
 
                 });
-                markers[lista_coordenadas[i].idsitios] = marker;
+               markers2.push(marker);
+               
 
                 datos.innerHTML='';
 
@@ -125,8 +135,8 @@ require_once("Controlador/ControladorCoordenadas.php");
 
                                  localStorage.setItem('titulo', titulo);}
                          } */
-                        datos.innerHTML = '<a> Municipio: '+lista_coordenadas[i].Municipio+'</a></br><a>Tipo de Sitio: '+lista_coordenadas[i].Categoria+'</a>'+
-                            '</br><a>Toneladas recibidas por dia: '+lista_coordenadas[i].Toneladas_por_Dia+'</a>'+'</br><a>Estado de operacion: '+lista_coordenadas[i].Edo_operacion+'</a>'
+                        datos.innerHTML = '<a> Municipio: '+lista_coordenadas[i].Municipio+'</a></br><a>Tipo de Sitio: '+lista_coordenadas[i].tipositio+'</a>'+
+                            '</br><a>Toneladas recibidas por dia: '+lista_coordenadas[i].Toneladas_por_dia+'</a>'+'</br><a>Estado de operacion: '+lista_coordenadas[i].Edo_operacion+'</a>'
                         infowindow.setContent(datos);
                         infowindow.open(map, marker);
 
@@ -145,14 +155,77 @@ require_once("Controlador/ControladorCoordenadas.php");
                     center: {lat:parseFloat(lista_coordenadas[i].Latitud), lng:parseFloat(lista_coordenadas[i].Longitud)},
                     radius: 1000,
                 });
-                circulos[lista_coordenadas[i].idsitios] = circle;
+                circulos[lista_coordenadas[i].idSitio] = circle;
             }
-        }
-        var toggle = document.querySelector("#hide");
-        var flag;
-        toggle.addEventListener('click', function(){
 
-        });
+            var j = 0;
+        
+                console.log(markers);
+                console.log(markers2);
+                console.log(Object.keys(markers2).length);
+
+                for (var i = 0; i < markers2.length; i++) {
+                    
+                    if (markers2[i].sitio === 'Relleno Sanitario') {
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/yellow-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else if(markers2[i].sitio === 'Relleno Sanitario Privado'){
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/blue-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else if(markers2[i].sitio === 'Sitio Controlado'){
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/green-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else if(markers2[i].sitio === 'Tiradero a Cielo Abierto'){
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/ltblue-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else if(markers2[i].sitio === 'Tiradero a Cielo Abierto Privado'){
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/orange-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else if(markers2[i].sitio === 'Tiradero Clandestino'){
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/pink-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else if(markers2[i].sitio === 'Tiradero Controlado'){
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/purple-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else if(markers2[i].sitio === 'Tiradero Contrlado Privado'){
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/red-dot.png');
+                        Marker.setMap(map);
+                    }
+                    else{
+                        var Marker = markers2[i];
+                        Marker.setIcon('http://maps.google.com/mapfiles/kml/paddle/wht-circle.png');
+                        
+                        Marker.setMap(map);
+                    }
+
+                       
+                    }   
+        }
+        
+
+var button = document.querySelector('#buton-holi');
+
+ 
+
+    
+       
+
+       var flag;
 
         function desactivar(idMark){
             if(flag === 0){
@@ -164,6 +237,10 @@ require_once("Controlador/ControladorCoordenadas.php");
                 flag = 0;
             }
         }
+    
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8R1knz15286Hf1yU1ievgZFxeF7fnC0w&callback=initMap">
     </script>
 </div>
 <section>

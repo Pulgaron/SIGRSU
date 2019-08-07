@@ -55,7 +55,7 @@
                     <a class="nav-link" href="vistaAdmin.php"><span class="sr-only; icon-home"></span> Mi cuenta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Georreferencias.php">Georreferencias</a>
+                    <a class="nav-link" href="Georreferencias.php">Sitios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="BaseDatos.php">Base de Datos</a>
@@ -71,6 +71,89 @@
         </button>
     </nav>
 </div>
+<section>
+    <article>
+        <h2 style="text-align: left">Tabla completa de Sitios de Disposción Final</h2>
+        <br>
+        <div style="margin-top: 50px">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-warning">
+                        <th scope="col">idTabla</th>
+                        <th scope="col">idSitio</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Región</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Latitud</th>
+                        <th scope="col">Longitud</th>
+                        <th scope="col">Tipo de sitio</th>
+                        <th scope="col">Estado de operación</th>
+                        <th scope="col">Toneladas por día</th>
+                        <th scope="col">Años de vida útil</th>
+                        <th scope="col">Es proyecto ejecutivo</th>
+                        <th scope="col">Cumple con normas</th>
+                        <th scope="col">Tiene pepena</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                if (isset($_POST["sub"])):
+                    foreach ($consultamunicipios as $consultamunicipio):
+                        ?>
+                    <tr class="table-light">
+                        <td>
+                            <a> <?php echo $consultamunicipio["Municipio"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["Latitud"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["Longitud"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["NombreSitio"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["EstadoOperacion"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["Toneladas_por_dia"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["Anios_vida_util"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["Proyecto_Ejecutivo"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["Cumple_Norma"]?></a>
+                        </td>
+                        <td>
+                            <a> <?php echo $consultamunicipio["Pepena"]?></a>
+                        </td>
+
+                    </tr>
+                    <?php endforeach;endif; ?>
+                </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+        <h5 style="text-align: left; margin-top: 100px">Descargas:</h5>
+        <br>
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <input type="hidden" value="<?php echo $municipioo?>" name="Municipio">
+            <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-success" <button type="button">Archivo Excel</button>
+            <!--<button type="button" class="btn btn-success">Archivo PDF</button>-->
+            <form>
+                <br>
+                <h5 style="text-align: left; margin-top: 100px">Consultas</h5>
+                <br>
+                <a class="btn btn-primary" id="botonconculta" href="ConsultaRegion.php" role="button">Por Región</a>
+                <a class="btn btn-primary" id="botonconculta" href="ConsultaMunicipios.php" role="button">Por Municipio</a>
+                <a class="btn btn-primary" id="botonconculta" href="ConsultaTipo.php" role="button">Por Tipo de sitio</a>
+    </article>
+</section>
 <div style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 50px">
     <table>
         <tr>
