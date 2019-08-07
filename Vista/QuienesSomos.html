@@ -10,81 +10,90 @@
 </head>
 <body>
 <header>
-    <div class="contenedor">
-        <div class="encabezado">
-            <script languaje="JavaScript">
-                var mydate=new Date()
-                var year=mydate.getYear()
-                if (year < 1000)
-                    year+=1900
-                var day=mydate.getDay()
-                var month=mydate.getMonth()
-                var daym=mydate.getDate()
-                if (daym<10)
-                    daym="0"+daym
-                var dayarray=new Array("Domingo,","Lunes,","Martes,","Miércoles,","Jueves,","Viernes,","Sábado,")
-                var montharray=new Array("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
-                document.write("<font color='white' face='sans-serif' style='font-size:10pt; margin-top: 10px'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
-            </script>
-        </div>
-        <br>
-        <div id="marca">
-            <table style="margin-left: 10%">
-                <tr>
-                    <td >
-                        <img width="120px" height="150px" style="margin-right: 30px" src="../imagenes/logo2.png">
-                    </td>
-                    <td style="border-left: 1px solid white; border-right: 1px solid white;">
-                        <h3 >Sitios de Disposición Final de Residuos Sólidos Urbanos</h3>
-                        <h3>Estado de Veracruz</h3>
-                    </td>
-                    <td >
-                        <img width="160px" height="140px" style="margin-left: 30px" src="../imagenes/logouvcolor.png">
-                    </td>
-                </tr>
-            </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+                <img width="170px" height="130px"  src="../imagenes/logoUVNOMBRE.png">
+            </div>
+            <div class="col-lg-8">
+                <h3 style="text-align: center">Sitios de Disposición Final de Residuos Sólidos Urbanos</h3>
+                <h3 style="text-align: center; margin-top: -5px">del Estado de Veracruz</h3>
+            </div>
+            <div class="col-lg-2">
+                <img width="110px" height="140px" style="margin-right: 15%" src="../imagenes/logo2.png">
+            </div>
         </div>
     </div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="collapse navbar-collapse" id="navbarColor01" >
+                <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item active">
+                        <a class="nav-link"  href="../index.php"><span class="sr-only; icon-home"></span> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="informacion.html">Información</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="QuienesSomos.html">Quiénes somos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="false">Consultas <span class="caret"></span></a>
+                        <div class="dropdown-menu" aria-labelledby="download">
+                            <!--<a class="dropdown-item" target="_blank" href="https://jsfiddle.net/bootswatch/jmg3gykg/">Por Estado</a>
+                            <div class="dropdown-divider"></div>-->
+                            <a class="dropdown-item"  href="consultas/ConsultaRegion.php">Por Región</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  href="consultas/ConsultaMunicipios.php">Por Municipio</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  href="consultas/ConsultaTipo.php">Por Tipo de sitio</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-right: 40px;">
+                <script languaje="JavaScript">
+                    var mydate=new Date()
+                    var year=mydate.getYear()
+                    if (year < 1000)
+                        year+=1900
+                    var day=mydate.getDay()
+                    var month=mydate.getMonth()
+                    var daym=mydate.getDate()
+                    if (daym<10)
+                        daym="0"+daym
+                    var dayarray=new Array("Domingo,","Lunes,","Martes,","Miércoles,","Jueves,","Viernes,","Sábado,")
+                    var montharray=new Array("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
+                    document.write("<font color='white' face='sans-serif' style='font-size:10pt; margin-top: 10px'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
+                </script>
+            </div>
+            <a class="btn btn-success btn-sm" style="margin-right: 20px" href="login.html">Iniciar Sesión</a>
+            <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
 </header>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary nav-tabs">
-        <div class="collapse navbar-collapse" id="navbarColor01" >
-            <ul class="navbar-nav mr-auto " >
-                <li class="nav-item active">
-                    <a class="nav-link" href="../index.php"><span class="sr-only; icon-home"></span> Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="informacion.html">Información</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Quiénes somos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Contactos.html">Contactos</a>
-                </li>
-            </ul>
-        </div>
-        <a class="btn btn-success btn-sm" style="margin-right: 20px" href="login.html">Iniciar Sesión</a>
-        <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-</div>
 <section>
     <article>
         <h2 style="text-align: left">Laboratorio de Gestión y Control Ambiental</h2>
         <br>
-        <p>El Laboratorio de Gestión y Control Ambiental (LABGECA) de la Universidad Veracruzana (figura 5), adscrito a la Facultad de Ciencias Químicas en la ciudad de Orizaba, Ver. está integrado por un grupo de investigación con más de 25 años trabajando sobre problemas ambientales. Han conformado un Cuerpo Académico denominado “Gestión y control de la contaminación ambiental” cuyas líneas de investigación involucran: Procesos de tratamiento de aguas residuales, procesos de potabilización de agua, tratamiento de desechos sólidos orgánicos, valorización de residuos lignocelulósico y producción de biocombustible.</p>
+        <p>El Laboratorio de Gestión y Control Ambiental (LABGECA) de la Universidad Veracruzana, adscrito a la Facultad de Ciencias Químicas en la ciudad de Orizaba, Ver. está integrado por un grupo de investigación con más de 25 años trabajando sobre problemas ambientales. Han conformado un Cuerpo Académico denominado “Gestión y control de la contaminación ambiental” cuyas líneas de investigación involucran: Procesos de tratamiento de aguas residuales, procesos de potabilización de agua, tratamiento de desechos sólidos orgánicos, valorización de residuos lignocelulósico y producción de biocombustible.</p>
         <p>Una de esas áreas, el “Tratamiento de desechos sólidos urbanos”, tiene como interés analizar el problema de la basura en la región y plantear posibles soluciones al mismo, desarrollando herramientas que faciliten esta tarea. Es así que se ha detectado la necesidad de disponer de un sistema automatizado que permita conocer cuáles son los sitios donde las poblaciones regularmente depositan sus desechos, los que técnicamente se denominan: sitios de disposición final.</p>
         <p>Gracias a la contribución de un colaborador, el Ing. Álvaro Jiménez Sánchez, que a lo largo de varios años de trabajo en la Procuraduría  de Medio Ambiente PMA y donde elaboró una recopilación de los sitios anteriormente mencionados. Sin embargo, estos datos no han podido ser realmente explotados al máximo porque hace falta que sean integrados en una herramienta.</p>
         <p>Es por ello que el LABGECA ha solicitado que se desarrolle un sistema web que integre los datos recopilados por el Ing. Jiménez y se logre la localización de todos los sitios de disposición final de RSU en Veracruz.</p>
+        <br>
+        <img width="35%" height="35%" style="alignment: center" src="../imagenes/LABGECA.jpg">
         <br><br><br>
-        <img width="65%" height="65%" style="alignment: center" src="../imagenes/LABGECA.jpg">
-        <br><br><br><br><br><br>
     </article>
 </section>
-<footer>
-    <p style="text-align: center">SIG de Sitios de Disposición Final de RSU COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
+<script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+<script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://bootswatch.com/_assets/js/custom.js"></script>
+<footer >
+    <p >Contacto: Dra. Gloria Inés González López. Correo: giglzlzy@yahoo.com.mx</p>
+    <p style="margin-top: -7px"">SDF de RSU del Estado de Veracruz COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
 </footer>
 </body>
 </html>

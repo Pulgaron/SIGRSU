@@ -27,68 +27,66 @@
 <body>
 <header>
     <div class="contenedor">
-        <div class="encabezado">
-            <script languaje="JavaScript">
-                var mydate=new Date()
-                var year=mydate.getYear()
-                if (year < 1000)
-                    year+=1900
-                var day=mydate.getDay()
-                var month=mydate.getMonth()
-                var daym=mydate.getDate()
-                if (daym<10)
-                    daym="0"+daym
-                var dayarray=new Array("Domingo,","Lunes,","Martes,","Miércoles,","Jueves,","Viernes,","Sábado,")
-                var montharray=new Array("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
-                document.write("<font color='white' face='sans-serif' style='font-size:10pt; margin-top: 10px'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
-            </script>
-        </div>
-        <br>
         <div id="marca">
-            <table style="margin-left: 10%">
+            <div style="margin-right: 40px; margin-top: 5px">
+                <script languaje="JavaScript">
+                    var mydate=new Date()
+                    var year=mydate.getYear()
+                    if (year < 1000)
+                        year+=1900
+                    var day=mydate.getDay()
+                    var month=mydate.getMonth()
+                    var daym=mydate.getDate()
+                    if (daym<10)
+                        daym="0"+daym
+                    var dayarray=new Array("Domingo,","Lunes,","Martes,","Miércoles,","Jueves,","Viernes,","Sábado,")
+                    var montharray=new Array("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
+                    document.write("<font color='black' face='sans-serif' style='font-size:11pt; margin-top: 10px'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
+                </script>
+            </div>
+            <table style="margin-left: 20px">
                 <tr>
                     <td >
-                        <img width="120px" height="150px" style="margin-right: 30px" src="../imagenes/logo2.png">
-                    </td>
-                    <td style="border-left: 1px solid white; border-right: 1px solid white;">
-                        <h3 >Sitios de Disposición Final de Residuos Sólidos Urbanos</h3>
-                        <h3>Estado de Veracruz</h3>
+                        <img width="100px" height="70px" src="../imagenes/logouv2.png">
                     </td>
                     <td >
-                        <img width="160px" height="140px" style="margin-left: 30px" src="../imagenes/logouvcolor.png">
+                        <img width="60px" height="80px" src="../imagenes/logo2.png">
+                    </td>
+                    <td >
+                        <h4 >Sitios de Disposición Final de Residuos Sólidos Urbanos del Estado de Veracruz</h4>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse"  id="navbarColor01" >
+                <ul class="navbar-nav mr-auto " >
+                    <li class="nav-item active">
+                        <a class="nav-link" href="vistaAdmin.html"><span class="sr-only; icon-home"></span> Mi cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Georreferencias.php">Sitios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="BaseDatos.php">Base de Datos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Nvoadmin.html">Nuevo administrador</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="btn btn-secondary btn-sm" style="margin-right: 20px" href="../Controlador/usuarios/cerrar_sesion_controller.php">Cerrar Sesión</a>
+            <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
 </header>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="collapse navbar-collapse" id="navbarColor01" >
-            <ul class="navbar-nav mr-auto " >
-                <li class="nav-item active">
-                    <a class="nav-link" href="vistaAdmin.html"><span class="sr-only; icon-home"></span> Mi cuenta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Georreferencias.php">Sitios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="BaseDatos.php">Base de Datos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Nvoadmin.html">Nuevo administrador</a>
-                </li>
-            </ul>
-        </div>
-        <a class="btn btn-success btn-sm" style="margin-right: 20px" href="../Controlador/usuarios/cerrar_sesion_controller.php">Cerrar Sesión</a>
-        <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-</div>
 <section>
     <article>
-        <div class="jumbotron">
+        <div class="jumbotron ">
             <h1 class="display-3" style="text-align: left">¡Bienvenido!</h1></a>
             <br>
             <table >
@@ -100,15 +98,16 @@
                     </td>
                     <td width="10%" ></td>
                     <td width="45%" >
-                        <img width="50%" height="55%" style="alignment: center" src="../imagenes/logo.png">
+                        <img width="50%" height="55%" style="alignment: center" src="../imagenes/logo2.png">
                     </td>
                 </tr>
             </table>
         </div>
     </article>
 </section>
-<footer>
-    <p style="text-align: center">SIG de Sitios de Disposición Final de RSU COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
+<footer >
+    <p style="text-align: center; color: #fff;">Contacto: Dra. Gloria Inés González López. Correo: giglzlzy@yahoo.com.mx</p>
+    <p style="color: #fff; text-align: center">SDF de RSU del Estado de Veracruz COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
 </footer>
 </body>
 </html>

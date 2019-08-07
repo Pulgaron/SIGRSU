@@ -63,39 +63,18 @@ if(isset($_POST['export_data'])) {
 </head>
 <body>
 <header>
-    <div class="contenedor">
-        <div class="encabezado">
-            <script languaje="JavaScript">
-                var mydate=new Date()
-                var year=mydate.getYear()
-                if (year < 1000)
-                    year+=1900
-                var day=mydate.getDay()
-                var month=mydate.getMonth()
-                var daym=mydate.getDate()
-                if (daym<10)
-                    daym="0"+daym
-                var dayarray=new Array("Domingo,","Lunes,","Martes,","Miércoles,","Jueves,","Viernes,","Sábado,")
-                var montharray=new Array("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
-                document.write("<font color='white' face='sans-serif' style='font-size:10pt; margin-top: 10px'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
-            </script>
-        </div>
-        <br>
-        <div id="marca">
-            <table style="margin-left: 10%">
-                <tr>
-                    <td >
-                        <img width="120px" height="140px" style="margin-right: 30px" src="../../imagenes/logo2.png">
-                    </td>
-                    <td style="border-left: 1px solid white; border-right: 1px solid white;">
-                        <h3 >Sitios de Disposición Final de Residuos Sólidos Urbanos</h3>
-                        <h3>Estado de Veracruz</h3>
-                    </td>
-                    <td >
-                        <img width="160px" height="140px" style="margin-left: 30px" src="../../imagenes/logouvcolor.png">
-                    </td>
-                </tr>
-            </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+                <img width="170px" height="130px"  src="../../imagenes/logoUVNOMBRE.png">
+            </div>
+            <div class="col-lg-8">
+                <h3 style="text-align: center">Sitios de Disposición Final de Residuos Sólidos Urbanos</h3>
+                <h3 style="text-align: center; margin-top: -5px">del Estado de Veracruz</h3>
+            </div>
+            <div class="col-lg-2">
+                <img width="110px" height="140px" style="margin-right: 15%" src="../../imagenes/logo2.png">
+            </div>
         </div>
     </div>
     <div>
@@ -111,12 +90,37 @@ if(isset($_POST['export_data'])) {
                     <li class="nav-item">
                         <a class="nav-link"  href="../QuienesSomos.html">Quiénes somos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link"  href="../Contactos.html">Contactos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="false">Consultas <span class="caret"></span></a>
+                        <div class="dropdown-menu" aria-labelledby="download">
+                            <!--<a class="dropdown-item" target="_blank" href="https://jsfiddle.net/bootswatch/jmg3gykg/">Por Estado</a>
+                            <div class="dropdown-divider"></div>-->
+                            <a class="dropdown-item"  href="ConsultaRegion.php">Por Región</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  href="ConsultaMunicipios.php">Por Municipio</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  href="ConsultaTipo.php">Por Tipo de sitio</a>
+                        </div>
                     </li>
                 </ul>
             </div>
-            <a class="btn btn-success btn-sm" style="margin-right: 20px" href="../login.html">Iniciar Sesión</a>
+            <div style="margin-right: 40px;">
+                <script languaje="JavaScript">
+                    var mydate=new Date()
+                    var year=mydate.getYear()
+                    if (year < 1000)
+                        year+=1900
+                    var day=mydate.getDay()
+                    var month=mydate.getMonth()
+                    var daym=mydate.getDate()
+                    if (daym<10)
+                        daym="0"+daym
+                    var dayarray=new Array("Domingo,","Lunes,","Martes,","Miércoles,","Jueves,","Viernes,","Sábado,")
+                    var montharray=new Array("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
+                    document.write("<font color='white' face='sans-serif' style='font-size:10pt; margin-top: 10px'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
+                </script>
+            </div>
+            <a class="btn btn-success btn-sm" style="margin-right: 20px" href="login.html">Iniciar Sesión</a>
             <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -140,14 +144,13 @@ if(isset($_POST['export_data'])) {
                             <option value="<?php echo $region['idRegion'];?>"> <?php echo $region['Region'];?> </option>
                         <?php endforeach;?>
                     </select>
-                    <button type="submit" name="sub" class="btn btn-primary btn-sm">Aceptar</button> <!-- AQUIIIIIIIIIIII-->
+                    <button type="submit" name="sub" class="btn btn-primary btn-sm">Aceptar</button>
                 </form>
                 <div style="margin-top: 50px">
-                    <table class="table table-hover">
+                    <table class="table table-hover" >
                         <thead>
                         <tr class="table-warning">
                             <th scope="col">Región</th>
-<<<<<<< HEAD
                             <th scope="col">Municipio</th>
                             <th scope="col">Latitud</th>
                             <th scope="col">Longitud</th>
@@ -158,11 +161,6 @@ if(isset($_POST['export_data'])) {
                             <th scope="col">Es proyecto ejecutivo</th>
                             <th scope="col">Cumple con normas</th>
                             <th scope="col">Tiene pepena</th>
-=======
-                            <th scope="col">Latitud</th>
-                            <th scope="col">Longitud</th>
-                            <th scope="col">Estado de operación</th>
->>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
                         </tr>
                         </thead>
                         <tbody>
@@ -171,18 +169,6 @@ if(isset($_POST['export_data'])) {
                             foreach ($consultaregiones as $consultaregion):
                                 ?>
                                 <tr class="table-light">
-<<<<<<< HEAD
-=======
-                                    <td>
-                                        <a> <?php echo $consultaregion["Region"]?></a>
-                                    </td>
-                                    <td>
-                                        <a> <?php echo $consultaregion["Region"]?></a>
-                                    </td>
-                                    <td>
-                                        <a> <?php echo $consultaregion["Region"]?></a>
-                                    </td>
->>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
                                     <td>
                                         <a> <?php echo $consultaregion["Region"]?></a>
                                     </td>
@@ -225,21 +211,11 @@ if(isset($_POST['export_data'])) {
         </div>
         <h5 style="text-align: left; margin-top: 100px">Descargas:</h5>
         <br>
-<<<<<<< HEAD
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <input type="hidden" value="<?php echo $regioon?>" name="Region">
-            <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-success" <button type="button" >Archivo Excel</button>
+            <button type="submit" id="export_data" name='export_data' value="Export to excel" <button type="button" ><img width="10%" height="10%" src="../../imagenes/excel-icon.png"> </button></button>
             <!--<button type="button" class="btn btn-success">Archivo PDF</button>-->
-        <br>
-        <h5 style="text-align: left; margin-top: 100px">Consultas</h5>
-        <br>
-        <a class="btn btn-primary" id="botonconculta" href="ConsultaRegion.php" role="button">Por Región</a>
-        <a class="btn btn-primary" id="botonconculta" href="ConsultaMunicipios.php" role="button">Por Municipio</a>
-        <a class="btn btn-primary" id="botonconculta" href="ConsultaTipo.php" role="button">Por Tipo de sitio</a>
-=======
-        <button type="button" class="btn btn-outline-success">Archivo Excel</button>
-        <button type="button" class="btn btn-outline-success">Archivo PDF</button>
->>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
+        </form>
     </article>
 </section>
 <script>
@@ -247,8 +223,9 @@ if(isset($_POST['export_data'])) {
         $('.js-example-basic-single').select2();
     });
 </script>
-<footer>
-    <p style="text-align: center">SIG de Sitios de Disposición Final de RSU COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
+<footer >
+    <p >Contacto: Dra. Gloria Inés González López. Correo: giglzlzy@yahoo.com.mx</p>
+    <p style="margin-top: -7px"">SDF de RSU del Estado de Veracruz COPYRIGHT &copy 2019 | UNIVERSIDAD VERACRUZANA</p>
 </footer>
 </body>
 </html>
