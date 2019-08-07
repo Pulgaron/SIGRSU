@@ -25,6 +25,7 @@ if(isset($_POST['export_data'])) {
 // headers for download
     header("Content-Disposition: attachment; filename=\"$fileName\"");
     header("Content-Type: application/vnd.ms-excel");
+<<<<<<< HEAD
 
     $flag = false;
     foreach ($consultamunicipios as $row) {
@@ -39,6 +40,22 @@ if(isset($_POST['export_data'])) {
 
     }
 
+=======
+
+    $flag = false;
+    foreach ($consultamunicipios as $row) {
+        if (!$flag) {
+            // display column names as first row
+            echo implode("\t", array_keys($row)) . "\n";
+            $flag = true;
+        }
+        // filter data
+        array_walk($row, 'filterData');
+        echo implode("\t", array_values($row)) . "\n";
+
+    }
+
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
     exit;
 }
 ?>
@@ -152,6 +169,7 @@ if(isset($_POST['export_data'])) {
                     <table class="table table-hover">
                         <thead>
                         <tr class="table-warning">
+<<<<<<< HEAD
                             <th scope="col">Municipio</th>
                             <th scope="col">Latitud</th>
                             <th scope="col">Longitud</th>
@@ -162,6 +180,12 @@ if(isset($_POST['export_data'])) {
                             <th scope="col">Es proyecto ejecutivo</th>
                             <th scope="col">Cumple con normas</th>
                             <th scope="col">Tiene pepena</th>
+=======
+                            <th scope="col">Municipo</th>
+                            <th scope="col">Latitud</th>
+                            <th scope="col">Longitud</th>
+                            <th scope="col">Tipo de sitio</th>
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
                         </tr>
                         </thead>
                         <tbody>
@@ -179,6 +203,7 @@ if(isset($_POST['export_data'])) {
                             <td>
                                 <a> <?php echo $consultamunicipio["Longitud"]?></a>
                             </td>
+<<<<<<< HEAD
                             <td>
                                 <a> <?php echo $consultamunicipio["NombreSitio"]?></a>
                             </td>
@@ -200,6 +225,8 @@ if(isset($_POST['export_data'])) {
                             <td>
                                 <a> <?php echo $consultamunicipio["Pepena"]?></a>
                             </td>
+=======
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
 
                         </tr>
                         <?php endforeach;endif; ?>
@@ -212,6 +239,7 @@ if(isset($_POST['export_data'])) {
         <br>
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <input type="hidden" value="<?php echo $municipioo?>" name="Municipio">
+<<<<<<< HEAD
             <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-success" <button type="button">Archivo Excel</button>
             <!--<button type="button" class="btn btn-success">Archivo PDF</button>-->
         <form>
@@ -221,6 +249,12 @@ if(isset($_POST['export_data'])) {
         <a class="btn btn-primary" id="botonconculta" href="ConsultaRegion.php" role="button">Por Región</a>
         <a class="btn btn-primary" id="botonconculta" href="ConsultaMunicipios.php" role="button">Por Municipio</a>
         <a class="btn btn-primary" id="botonconculta" href="ConsultaTipo.php" role="button">Por Tipo de sitio</a>
+=======
+            <a><?php echo $municipioo?><a/>
+        <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-outline-success" <button type="button" class="btn btn-outline-success">Archivo Excel</button>
+        <button type="button" class="btn btn-outline-success">Archivo PDF</button>
+            <form>
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
     </article>
 </section>
 <script>

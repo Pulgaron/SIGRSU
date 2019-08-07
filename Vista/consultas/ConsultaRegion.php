@@ -147,6 +147,7 @@ if(isset($_POST['export_data'])) {
                         <thead>
                         <tr class="table-warning">
                             <th scope="col">Región</th>
+<<<<<<< HEAD
                             <th scope="col">Municipio</th>
                             <th scope="col">Latitud</th>
                             <th scope="col">Longitud</th>
@@ -157,6 +158,11 @@ if(isset($_POST['export_data'])) {
                             <th scope="col">Es proyecto ejecutivo</th>
                             <th scope="col">Cumple con normas</th>
                             <th scope="col">Tiene pepena</th>
+=======
+                            <th scope="col">Latitud</th>
+                            <th scope="col">Longitud</th>
+                            <th scope="col">Estado de operación</th>
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
                         </tr>
                         </thead>
                         <tbody>
@@ -165,6 +171,18 @@ if(isset($_POST['export_data'])) {
                             foreach ($consultaregiones as $consultaregion):
                                 ?>
                                 <tr class="table-light">
+<<<<<<< HEAD
+=======
+                                    <td>
+                                        <a> <?php echo $consultaregion["Region"]?></a>
+                                    </td>
+                                    <td>
+                                        <a> <?php echo $consultaregion["Region"]?></a>
+                                    </td>
+                                    <td>
+                                        <a> <?php echo $consultaregion["Region"]?></a>
+                                    </td>
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
                                     <td>
                                         <a> <?php echo $consultaregion["Region"]?></a>
                                     </td>
@@ -207,6 +225,7 @@ if(isset($_POST['export_data'])) {
         </div>
         <h5 style="text-align: left; margin-top: 100px">Descargas:</h5>
         <br>
+<<<<<<< HEAD
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <input type="hidden" value="<?php echo $regioon?>" name="Region">
             <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-success" <button type="button" >Archivo Excel</button>
@@ -217,6 +236,10 @@ if(isset($_POST['export_data'])) {
         <a class="btn btn-primary" id="botonconculta" href="ConsultaRegion.php" role="button">Por Región</a>
         <a class="btn btn-primary" id="botonconculta" href="ConsultaMunicipios.php" role="button">Por Municipio</a>
         <a class="btn btn-primary" id="botonconculta" href="ConsultaTipo.php" role="button">Por Tipo de sitio</a>
+=======
+        <button type="button" class="btn btn-outline-success">Archivo Excel</button>
+        <button type="button" class="btn btn-outline-success">Archivo PDF</button>
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
     </article>
 </section>
 <script>

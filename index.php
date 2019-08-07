@@ -113,12 +113,19 @@ require_once("Controlador/ControladorCoordenadas.php");
                     title: lista_coordenadas[i].Municipio,
                     animation: google.maps.Animation.DROP,
                     id : parseInt(lista_coordenadas[i].idSitio),
+<<<<<<< HEAD
                     icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png',
                     sitio: lista_coordenadas[i].tipositio
 
                 });
                markers2.push(marker);
                
+=======
+                    icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png'
+
+                });
+                markers[lista_coordenadas[i].idSitio] = marker;
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
 
                 datos.innerHTML='';
 
@@ -135,7 +142,11 @@ require_once("Controlador/ControladorCoordenadas.php");
 
                                  localStorage.setItem('titulo', titulo);}
                          } */
+<<<<<<< HEAD
                         datos.innerHTML = '<a> Municipio: '+lista_coordenadas[i].Municipio+'</a></br><a>Tipo de Sitio: '+lista_coordenadas[i].tipositio+'</a>'+
+=======
+                        datos.innerHTML = '<a> Municipio: '+lista_coordenadas[i].Municipio+'</a></br><a>Tipo de Sitio: '+lista_coordenadas[i].Categoria+'</a>'+
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
                             '</br><a>Toneladas recibidas por dia: '+lista_coordenadas[i].Toneladas_por_dia+'</a>'+'</br><a>Estado de operacion: '+lista_coordenadas[i].Edo_operacion+'</a>'
                         infowindow.setContent(datos);
                         infowindow.open(map, marker);
@@ -216,6 +227,7 @@ require_once("Controlador/ControladorCoordenadas.php");
                        
                     }   
         }
+<<<<<<< HEAD
         
 
 var button = document.querySelector('#buton-holi');
@@ -226,6 +238,10 @@ var button = document.querySelector('#buton-holi');
        
 
        var flag;
+=======
+
+        var flag;
+>>>>>>> 3391e3ebbe47869f424fe6fc6d1fd89beb58a786
 
         function desactivar(idMark){
             if(flag === 0){
